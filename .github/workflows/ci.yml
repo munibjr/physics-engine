@@ -1,0 +1,27 @@
+name: C++ Build & Test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install CMake
+        run: brew install cmake
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+      - name: Run Tests
+        run: |
+          cd build
+          ./test_vector2
+          ./test_collision
+          ./test_world
+      - name: Run Benchmarks
+        run: |
+          cd build
+          ./benchmark
