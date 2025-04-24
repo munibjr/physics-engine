@@ -27,9 +27,17 @@ target_link_libraries(constraints physics_engine)
 
 # Tests
 enable_testing()
-add_executable(physics_tests tests/test_vector2.cpp tests/test_collision.cpp tests/test_world.cpp)
-target_link_libraries(physics_tests physics_engine)
-add_test(NAME PhysicsTests COMMAND physics_tests)
+add_executable(test_vector2 tests/test_vector2.cpp)
+target_link_libraries(test_vector2 physics_engine)
+add_test(NAME Vector2Tests COMMAND test_vector2)
+
+add_executable(test_collision tests/test_collision.cpp)
+target_link_libraries(test_collision physics_engine)
+add_test(NAME CollisionTests COMMAND test_collision)
+
+add_executable(test_world tests/test_world.cpp)
+target_link_libraries(test_world physics_engine)
+add_test(NAME WorldTests COMMAND test_world)
 
 # Benchmarks
 add_executable(benchmark_physics benchmarks/benchmark.cpp)
