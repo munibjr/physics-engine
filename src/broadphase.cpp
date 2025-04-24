@@ -74,7 +74,7 @@ BVHNode* BVH::buildTree(std::vector<RigidBody*>& bodies, int depth) {
     int axis = extent.x > extent.y ? 0 : 1;  // 0 for x, 1 for y
 
     // Sort bodies along axis
-    std::sort(bodies.begin(), bodies.end(), [axis](RigidBody* a, RigidBody* b) {
+    std::sort(bodies.begin(), bodies.end(), [axis](const RigidBody* a, const RigidBody* b) -> bool {
         float aVal = axis == 0 ? a->position.x : a->position.y;
         float bVal = axis == 0 ? b->position.x : b->position.y;
         return aVal < bVal;
