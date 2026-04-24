@@ -71,18 +71,19 @@ void testAABBCollision() {
 
 void testRestitution() {
     std::cout << "Testing restitution..." << std::endl;
-    
+
     RigidBody a(RigidBody::BodyType::Dynamic);
     a.setMass(1.0f);
     a.velocity = Vector2(1, 0);
     a.restitution = 0.8f;
-    
+
     RigidBody b(RigidBody::BodyType::Static);
     b.position = Vector2(5, 0);
-    
+    b.restitution = 0.5f;
+
     float e = std::min(a.restitution, b.restitution);
-    assert(std::abs(e - 0.4f) < 0.001f);  // min(0.8, 0.5)
-    
+    assert(std::abs(e - 0.5f) < 0.001f);  // min(0.8, 0.5) = 0.5
+
     std::cout << "✓ Restitution test passed" << std::endl;
 }
 
