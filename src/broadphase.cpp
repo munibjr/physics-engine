@@ -1,6 +1,7 @@
 #include "../include/broadphase.h"
 #include <algorithm>
 #include <iostream>
+#include <cfloat>
 
 namespace physics {
 
