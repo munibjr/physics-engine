@@ -25,16 +25,15 @@ void testGravity() {
 
 void testStaticBodies() {
     std::cout << "Testing static bodies..." << std::endl;
-    
+
     World world(Vector2(0, -9.81f));
-    
+
     RigidBody* staticBody = world.createBody(RigidBody::BodyType::Static);
     staticBody->position = Vector2(0, 0);
-    staticBody->setMass(1.0f);  // Static bodies ignore mass
-    
+
     assert(staticBody->inverseMass == 0);
     assert(staticBody->isStatic());
-    
+
     std::cout << "✓ Static body test passed" << std::endl;
 }
 
